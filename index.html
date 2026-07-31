@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$5K/Month Plan — Jaymes Verduzco</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f0f14; color: #e8e8f0; }
+
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 36px 40px 28px;
+    border-bottom: 3px solid #e94560;
+  }
+  .header h1 { font-size: 2.4rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+  .header h1 span { color: #e94560; }
+  .header p { margin-top: 6px; color: #9090b0; font-size: 0.95rem; }
+  .badge-row { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #c0c0d8;
+  }
+  .badge.red { border-color: #e94560; color: #e94560; background: rgba(233,69,96,0.1); }
+  .badge.green { border-color: #00d4aa; color: #00d4aa; background: rgba(0,212,170,0.1); }
+  .badge.gold { border-color: #ffd700; color: #ffd700; background: rgba(255,215,0,0.1); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+  /* PHASE CARDS */
+  .phases { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+  @media (max-width: 700px) { .phases { grid-template-columns: 1fr; } }
+
+  .phase-card {
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase-card.p1 { background: linear-gradient(135deg, #1a2744, #0d1b35); border: 1px solid #2a4a8a; }
+  .phase-card.p2 { background: linear-gradient(135deg, #1a2a1a, #0d1d0d); border: 1px solid #2a7a2a; }
+  .phase-card .phase-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .phase-card.p1 .phase-label { color: #5b9af5; }
+  .phase-card.p2 .phase-label { color: #5bcc5b; }
+  .phase-card h2 { font-size: 2rem; font-weight: 800; color: #fff; }
+  .phase-card h2 sub { font-size: 0.9rem; font-weight: 400; color: #8888aa; margin-left: 4px; }
+  .phase-card .dates { font-size: 0.82rem; color: #7070a0; margin-top: 4px; }
+  .phase-card .math-note {
+    margin-top: 14px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #a0a0c0;
+  }
+  .phase-card .math-note strong { color: #e8e8f0; }
+
+  /* SECTION HEADERS */
+  .section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #5b9af5;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(91,154,245,0.2);
+  }
+
+  /* DAILY TARGETS */
+  .daily-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .daily-card {
+    background: #1a1a2a;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .daily-card .icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .daily-card .number { font-size: 1.9rem; font-weight: 800; line-height: 1; }
+  .daily-card .number.blue { color: #5b9af5; }
+  .daily-card .number.green { color: #5bcc5b; }
+  .daily-card .number.gold { color: #ffd700; }
+  .daily-card .number.red { color: #e94560; }
+  .daily-card .number.purple { color: #c084fc; }
+  .daily-card .label { font-size: 0.78rem; color: #7070a0; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  .daily-card .sublabel { font-size: 0.72rem; color: #505070; margin-top: 3px; }
+
+  /* SCHEDULE */
+  .schedule { margin-bottom: 32px; }
+  .schedule-block {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .time-pill {
+    background: #1a1a2a;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5b9af5;
+    white-space: nowrap;
+    min-width: 110px;
+    text-align: center;
+  }
+  .schedule-content { flex: 1; }
+  .schedule-title { font-weight: 700; font-size: 0.9rem; color: #e8e8f0; }
+  .schedule-desc { font-size: 0.82rem; color: #7070a0; margin-top: 2px; line-height: 1.5; }
+
+  /* MILESTONES */
+  .milestones { margin-bottom: 32px; }
+  .milestone-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .milestone-date {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5b9af5;
+    min-width: 120px;
+  }
+  .milestone-bar-wrap {
+    flex: 1;
+    background: #1a1a2a;
+    border-radius: 6px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    border: 1px solid #2a2a3a;
+  }
+  .milestone-bar-wrap.red { border-color: #e9456040; background: #e9456010; }
+  .milestone-bar-wrap.gold { border-color: #ffd70040; background: #ffd70010; }
+  .milestone-bar-wrap.green { border-color: #5bcc5b40; background: #5bcc5b10; }
+  .milestone-text { font-size: 0.85rem; color: #c0c0d8; font-weight: 600; }
+  .milestone-sub { font-size: 0.76rem; color: #606080; margin-left: 8px; }
+
+  /* WEEKLY INCOME TABLE */
+  .income-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 0.85rem; }
+  .income-table th {
+    background: #1a1a2a;
+    color: #7070a0;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #2a2a3a;
+  }
+  .income-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #1e1e2e;
+    color: #c0c0d8;
+  }
+  .income-table tr:hover td { background: #1a1a2a; }
+  .income-table .money { color: #5bcc5b; font-weight: 700; }
+  .income-table .highlight td { background: #1a2a1a; }
+
+  /* BONUS SECTION */
+  .bonus-box {
+    background: linear-gradient(135deg, #1a1a0d, #252510);
+    border: 1px solid #ffd70040;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .bonus-box h3 { color: #ffd700; font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+  .bonus-box .deadline { color: #e94560; font-size: 0.8rem; font-weight: 700; margin-bottom: 16px; }
+  .bonus-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .bonus-tier {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid rgba(255,215,0,0.15);
+  }
+  .bonus-tier .credits { font-size: 0.75rem; color: #9090a0; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .bonus-tier .amount { font-size: 1.4rem; font-weight: 800; color: #ffd700; }
+  .bonus-tier .desc { font-size: 0.72rem; color: #707070; margin-top: 4px; }
+
+  /* PHASE 2 UPGRADE */
+  .upgrade-section {
+    background: linear-gradient(135deg, #0d1d0d, #1a2a1a);
+    border: 1px solid #2a7a2a;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .upgrade-section h3 { color: #5bcc5b; font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+  .upgrade-section .sub { color: #5b8a5b; font-size: 0.82rem; margin-bottom: 16px; }
+  .upgrade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .upgrade-grid { grid-template-columns: 1fr; } }
+  .upgrade-item { font-size: 0.85rem; color: #a0c0a0; line-height: 1.6; }
+  .upgrade-item strong { color: #5bcc5b; display: block; margin-bottom: 4px; }
+
+  /* RULES */
+  .rules {
+    background: #1a1a2a;
+    border-left: 4px solid #e94560;
+    border-radius: 0 10px 10px 0;
+    padding: 18px 20px;
+    margin-bottom: 32px;
+  }
+  .rules h3 { color: #e94560; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .rule { font-size: 0.85rem; color: #a0a0c0; margin-bottom: 8px; padding-left: 16px; position: relative; line-height: 1.5; }
+  .rule::before { content: '→'; position: absolute; left: 0; color: #e94560; font-weight: 700; }
+
+  .footer { text-align: center; padding: 20px; color: #404060; font-size: 0.75rem; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>$5K<span>/Month</span> Plan</h1>
+  <p>Jaymes Verduzco · Colonial Life PSR · Agent #832348</p>
+  <div class="badge-row">
+    <div class="badge red">⚠ New Rep Bonus Deadline: Aug 24, 2026</div>
+    <div class="badge green">Phase 1 Start: Aug 1, 2026</div>
+    <div class="badge gold">Phase 2 Start: Oct 1, 2026</div>
+    <div class="badge">5 Days/Week · All 3 Roles</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- PHASES -->
+  <div class="phases">
+    <div class="phase-card p1">
+      <div class="phase-label">Phase 1 · Aug 1 – Sep 30</div>
+      <h2>$500<sub>/week</sub></h2>
+      <div class="dates">$2,000/month from Colonial Life</div>
+      <div class="math-note">
+        Avg enrollee buys 2 products at ~$45/biweekly = <strong>$1,170/yr annual premium</strong><br>
+        You earn ~$492 commission (Opener + Enroller + Coordinator)<br>
+        65% advance = <strong>~$320 upfront per enrollee</strong><br><br>
+        <strong>Need: 1–2 enrollments/day or 1 group appointment/week</strong>
+      </div>
+    </div>
+    <div class="phase-card p2">
+      <div class="phase-label">Phase 2 · Oct 1 onwards</div>
+      <h2>$1,000<sub>/week</sub></h2>
+      <div class="dates">$4,000/month from Colonial Life</div>
+      <div class="math-note">
+        Ruz Studios contract ends Sept 30 — Colonial must carry more weight<br>
+        Double the activity or move to larger accounts (20+ employee groups)<br><br>
+        <strong>Need: 3–4 enrollments/day or 2 group appointments/week</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY ACTIVITY TARGETS — PHASE 1 -->
+  <div class="section-title">Daily Activity Targets — Phase 1 ($500/week)</div>
+  <div class="daily-grid">
+    <div class="daily-card">
+      <div class="icon">📞</div>
+      <div class="number blue">25</div>
+      <div class="label">Calls/Day</div>
+      <div class="sublabel">125/week min</div>
+    </div>
+    <div class="daily-card">
+      <div class="icon">📧</div>
+      <div class="number blue">20</div>
+      <div class="label">Emails/Day</div>
+      <div class="sublabel">via Laura or yourself</div>
+    </div>
+    <div class="daily-card">
+      <div class="icon">🚗</div>
+      <div class="number gold">4</div>
+      <div class="label">Location Drops/Day</div>
+      <div class="sublabel">20/week</div>
+    </div>
+    <div class="daily-card">
+      <div class="icon">🤝</div>
+      <div class="number purple">5</div>
+      <div class="label">DMs Reached/Day</div>
+      <div class="sublabel">decision-makers contacted</div>
+    </div>
+    <div class="daily-card">
+      <div class="icon">📅</div>
+      <div class="number green">1</div>
+      <div class="label">Appt Booked/Day</div>
+      <div class="sublabel">5/week target</div>
+    </div>
+    <div class="daily-card">
+      <div class="icon">✍️</div>
+      <div class="number red">2</div>
+      <div class="label">Enrollments/Day</div>
+      <div class="sublabel">10/week = $3,200 advances</div>
+    </div>
+  </div>
+
+  <!-- DAILY SCHEDULE -->
+  <div class="section-title">Daily Schedule (Mon–Fri)</div>
+  <div class="schedule">
+    <div class="schedule-block">
+      <div class="time-pill">8:00 – 8:30 AM</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Plan the Day</div>
+        <div class="schedule-desc">Review CRM, identify today's call/drop targets, check yesterday's follow-ups</div>
+      </div>
+    </div>
+    <div class="schedule-block">
+      <div class="time-pill">8:30 – 10:30 AM</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Phone Outreach Block</div>
+        <div class="schedule-desc">25 calls minimum — decision makers at DCFS, Parks & Rec, Health Centers, Fire, Probation, LAUSD. Leave voicemails, follow up on previous contacts</div>
+      </div>
+    </div>
+    <div class="schedule-block">
+      <div class="time-pill">10:30 AM – 12:00 PM</div>
+      <div class="schedule-content">
+        <div class="schedule-title">In-Person Drops (Round 1)</div>
+        <div class="schedule-desc">2–3 locations. Ask for benefits coordinator / office manager. Never pitch — request to get on the calendar for a staff benefits visit</div>
+      </div>
+    </div>
+    <div class="schedule-block">
+      <div class="time-pill">12:00 – 1:00 PM</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Email + CRM Update</div>
+        <div class="schedule-desc">Send 20 outreach emails (coordinate with Laura), log all morning contacts in CRM, flag hot leads</div>
+      </div>
+    </div>
+    <div class="schedule-block">
+      <div class="time-pill">1:00 – 4:00 PM</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Appointments OR In-Person Drops (Round 2)</div>
+        <div class="schedule-desc">If appointment booked → run the enrollment. If no appointment → 2 more location drops. Enrollment order: Accident → Hospital → CI → Cancer → Life</div>
+      </div>
+    </div>
+    <div class="schedule-block">
+      <div class="time-pill">4:00 – 5:00 PM</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Follow-Up + Confirm</div>
+        <div class="schedule-desc">Call back anyone who didn't answer this AM. Confirm next week's appointments. Update CRM with all outcomes. Log mileage in Everlance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY + MONTHLY MILESTONES -->
+  <div class="section-title">Weekly Income Milestones</div>
+  <table class="income-table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Dates</th>
+        <th>Focus</th>
+        <th>Enrollments Target</th>
+        <th>Income Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Week 1</td>
+        <td>Aug 1–7</td>
+        <td>Pipeline build — all outreach, no expectations</td>
+        <td>0–2</td>
+        <td class="money">$0–$640</td>
+      </tr>
+      <tr>
+        <td>Week 2</td>
+        <td>Aug 8–14</td>
+        <td>First appointments come in from Week 1 outreach</td>
+        <td>3–5</td>
+        <td class="money">$960–$1,600</td>
+      </tr>
+      <tr>
+        <td>Week 3</td>
+        <td>Aug 15–21</td>
+        <td>Hit $500/week threshold — pipeline flowing</td>
+        <td>5–8</td>
+        <td class="money">$1,600–$2,560</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>⚠ Week 4</strong></td>
+        <td><strong>Aug 22–24</strong></td>
+        <td><strong>NEW REP BONUS DEADLINE — push hard all week</strong></td>
+        <td>8–12</td>
+        <td class="money" style="color:#ffd700">$2,560–$3,840 + BONUS</td>
+      </tr>
+      <tr>
+        <td>Week 5</td>
+        <td>Aug 25–31</td>
+        <td>Sustain $500–$800/week rhythm</td>
+        <td>5–8</td>
+        <td class="money">$1,600–$2,560</td>
+      </tr>
+      <tr>
+        <td>Sep (all)</td>
+        <td>Sep 1–30</td>
+        <td>Lock in consistent $500/week before Ruz ends</td>
+        <td>8–10/week</td>
+        <td class="money">$500–$800/week</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>Oct+</strong></td>
+        <td><strong>Oct 1+</strong></td>
+        <td><strong>Phase 2 — Ruz contract gone, Colonial carries $1K/week</strong></td>
+        <td>12–15/week</td>
+        <td class="money" style="color:#5bcc5b">$1,000+/week</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- NEW REP BONUS -->
+  <div class="bonus-box">
+    <h3>🏆 New Rep Bonus — Don't Leave This on the Table</h3>
+    <div class="deadline">DEADLINE: August 24, 2026 (first 90 days from May 26 contract date)</div>
+    <div class="bonus-tiers">
+      <div class="bonus-tier">
+        <div class="credits">5,000 EN Credits</div>
+        <div class="amount">$200</div>
+        <div class="desc">First milestone — hit this by mid-August at latest</div>
+      </div>
+      <div class="bonus-tier">
+        <div class="credits">10,000 EN Credits</div>
+        <div class="amount">$1,000</div>
+        <div class="desc">$300 + $200 base + $500 extra for hitting within 90 days</div>
+      </div>
+      <div class="bonus-tier">
+        <div class="credits">50,000 EN Credits</div>
+        <div class="amount">$4,200</div>
+        <div class="desc">$1,000 base + 8% on 40,000 credits above 10K</div>
+      </div>
+      <div class="bonus-tier">
+        <div class="credits">100,000 EN Credits</div>
+        <div class="amount">$8,200</div>
+        <div class="desc">Maximum — 8% on all credits from 10K–100K</div>
+      </div>
+    </div>
+    <div style="margin-top:14px; font-size:0.8rem; color:#806040;">
+      EN Credits = Enroller Weighted Net Sales Credits. The more you enroll, the more credits stack. Every enrollment counts — push especially hard the 2 weeks before Aug 24.
+    </div>
+  </div>
+
+  <!-- PHASE 2 UPGRADE -->
+  <div class="upgrade-section">
+    <h3>Phase 2 Upgrade: Oct 1 → $1,000/Week</h3>
+    <div class="sub">Ruz Studios contract ends Sept 30. Colonial Life is now your primary income.</div>
+    <div class="upgrade-grid">
+      <div class="upgrade-item">
+        <strong>Calls: 30+/day (150+/week)</strong>
+        Add DPSS offices (32 locations) and LAUSD schools to rotation
+      </div>
+      <div class="upgrade-item">
+        <strong>Emails: 25+/day (125+/week)</strong>
+        Laura at full speed — LAUSD authorized UTLA vendor angle opens doors
+      </div>
+      <div class="upgrade-item">
+        <strong>Target 2 group appointments/week</strong>
+        Each appointment = 10–20 employees presented to, 5–10 enroll
+      </div>
+      <div class="upgrade-item">
+        <strong>Chase larger accounts</strong>
+        DCFS & Health Centers have 50–100+ employees per location
+      </div>
+      <div class="upgrade-item">
+        <strong>Aim for 12–15 enrollments/week</strong>
+        At $320/enrollment advance = $3,840–$4,800/week income
+      </div>
+      <div class="upgrade-item">
+        <strong>Add Whole Life to every pitch</strong>
+        Whole Life at 56.5% blended rate = highest commission per dollar of premium
+      </div>
+    </div>
+  </div>
+
+  <!-- NON-NEGOTIABLE RULES -->
+  <div class="rules">
+    <h3>Non-Negotiable Daily Rules</h3>
+    <div class="rule">Every contact goes into the CRM same day. No exceptions. A contact not logged is a contact lost.</div>
+    <div class="rule">Never show up to a location without a purpose: "I'm here to set up a staff benefits visit for [Department]."</div>
+    <div class="rule">Quote rates per pay period, never per month. Lower number = easier yes.</div>
+    <div class="rule">Enrollment order: Accident → Hospital → CI → Cancer → Life. Lead with what pays claims fastest.</div>
+    <div class="rule">Log every mile in Everlance immediately. At $0.725/mile every trip counts toward your tax deduction.</div>
+    <div class="rule">Confirm all appointments 24 hours ahead. Reduce no-shows. Every canceled appointment is lost commission.</div>
+    <div class="rule">Before Aug 24: treat every single day like it's the last day of your bonus window. It basically is.</div>
+  </div>
+
+</div>
+
+<div class="footer">Colonial Life PSR · Jaymes Verduzco · Agent #832348 · Generated July 31, 2026</div>
+
+</body>
+</html>
